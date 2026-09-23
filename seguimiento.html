@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1>Gestor de Envíos</h1>
+
+            <div class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="registrar.html">Registrar envío</a>
+                <a href="seguimiento.html">Seguimiento</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="seguimiento">
+            <h2>Consulta tu envío</h2>
+
+            <p>
+                Ingresa el número de guía para consultar el estado
+                de tu paquete.
+            </p>
+
+            <div class="busqueda">
+                <input
+                    type="text"
+                    id="numeroGuia"
+                    placeholder="Ejemplo: ENV-123456"
+                >
+
+                <button onclick="buscarEnvio()" class="btn">
+                    Buscar
+                </button>
+            </div>
+
+            <div id="informacionEnvio"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Gestor de Envíos © 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+

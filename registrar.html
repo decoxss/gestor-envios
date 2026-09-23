@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar envío</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1>Gestor de Envíos</h1>
+
+            <div class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="registrar.html">Registrar envío</a>
+                <a href="seguimiento.html">Seguimiento</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="formulario">
+            <h2>Registrar nuevo envío</h2>
+
+            <form id="formularioEnvio">
+
+                <h3>Datos del remitente</h3>
+
+                <label for="remitente">Nombre del remitente</label>
+                <input type="text" id="remitente" required>
+
+                <label for="telefonoRemitente">Teléfono</label>
+                <input type="tel" id="telefonoRemitente" required>
+
+                <h3>Datos del destinatario</h3>
+
+                <label for="destinatario">Nombre del destinatario</label>
+                <input type="text" id="destinatario" required>
+
+                <label for="telefonoDestinatario">Teléfono</label>
+                <input type="tel" id="telefonoDestinatario" required>
+
+                <h3>Información del envío</h3>
+
+                <label for="origen">Origen</label>
+                <input type="text" id="origen" required>
+
+                <label for="destino">Destino</label>
+                <input type="text" id="destino" required>
+
+                <label for="tipo">Tipo de paquete</label>
+                <select id="tipo" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sobre">Sobre</option>
+                    <option value="Caja">Caja</option>
+                    <option value="Paquete">Paquete</option>
+                </select>
+
+                <label for="peso">Peso aproximado</label>
+                <input type="number" id="peso" step="0.1" min="0" required>
+
+                <label for="entrega">Tipo de entrega</label>
+                <select id="entrega" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Punto medio">
+                        Entregamos en puntos medios acordados
+                    </option>
+                    <option value="Domicilio">
+                        Envío hasta tu domicilio con costo extra
+                    </option>
+                </select>
+
+                <button type="submit" class="btn">
+                    Registrar envío
+                </button>
+
+            </form>
+
+            <div id="resultado" class="resultado"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Gestor de Envíos © 2026</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+
