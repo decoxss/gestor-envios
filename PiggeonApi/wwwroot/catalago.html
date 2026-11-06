@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de envíos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1>Gestor de Envíos</h1>
+
+            <div class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="registrar.html">Registrar envío</a>
+                <a href="seguimiento.html">Seguimiento</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="#" id="cerrarSesion">Cerrar sesión</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <section class="formulario">
+            <h2>Catálogo de envíos</h2>
+
+            <p style="margin-bottom: 20px;">
+                Consulta los paquetes registrados en nuestro sistema.
+            </p>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #12355b; color: white;">
+                            <th style="padding: 12px;">Guía</th>
+                            <th style="padding: 12px;">Remitente</th>
+                            <th style="padding: 12px;">Destinatario</th>
+                            <th style="padding: 12px;">Destino</th>
+                            <th style="padding: 12px;">Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaEnvios"></tbody>
+                </table>
+            </div>
+
+            <p id="mensajeCatalogo" style="margin-top: 20px;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Gestor de Envíos © 2026</p>
+    </footer>
+
+    <script src="js/catalogo.js"></script>
+
+</body>
+</html>

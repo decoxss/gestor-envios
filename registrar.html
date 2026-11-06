@@ -1,23 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar envío</title>
+    <title>Registrar envío | PiggeonExpress</title>
+    <script src="js/sesion.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
-            <h1>Gestor de Envíos</h1>
+            <h1>PiggeonExpress</h1>
 
             <div class="menu">
                 <a href="index.html">Inicio</a>
                 <a href="registrar.html">Registrar envío</a>
                 <a href="seguimiento.html">Seguimiento</a>
-                <a href="catalago.html">catalago</a>
-                <a href="login.html">Iniciar Sesion</a>
+                <a href="catalago.html">Catálogo</a>
+                <a href="login.html">Iniciar sesión</a>
             </div>
         </nav>
     </header>
@@ -25,32 +27,54 @@
     <main class="contenedor">
 
         <section class="formulario">
+
             <h2>Registrar nuevo envío</h2>
+            <p>Completa los siguientes datos para registrar tu paquete.</p>
 
             <form id="formularioEnvio">
 
                 <h3>Datos del remitente</h3>
 
-                <label for="remitente">Nombre del remitente</label>
+                <label for="remitente">Nombre completo</label>
                 <input type="text" id="remitente" required>
 
                 <label for="telefonoRemitente">Teléfono</label>
                 <input type="tel" id="telefonoRemitente" required>
 
+                <label for="correoRemitente">Correo electrónico</label>
+                <input type="email" id="correoRemitente" required>
+
+                <label for="direccionRemitente">Dirección completa</label>
+                <input type="text" id="direccionRemitente" required>
+
+                <label for="cpRemitente">Código postal</label>
+                <input type="text" id="cpRemitente" maxlength="5" required>
+
+
                 <h3>Datos del destinatario</h3>
 
-                <label for="destinatario">Nombre del destinatario</label>
+                <label for="destinatario">Nombre completo</label>
                 <input type="text" id="destinatario" required>
 
                 <label for="telefonoDestinatario">Teléfono</label>
                 <input type="tel" id="telefonoDestinatario" required>
 
-                <h3>Información del envío</h3>
+                <label for="correoDestinatario">Correo electrónico</label>
+                <input type="email" id="correoDestinatario" required>
 
-                <label for="origen">Origen</label>
+                <label for="direccionDestinatario">Dirección completa</label>
+                <input type="text" id="direccionDestinatario" required>
+
+                <label for="cpDestinatario">Código postal</label>
+                <input type="text" id="cpDestinatario" maxlength="5" required>
+
+
+                <h3>Información del paquete</h3>
+
+                <label for="origen">Ciudad de origen</label>
                 <input type="text" id="origen" required>
 
-                <label for="destino">Destino</label>
+                <label for="destino">Ciudad de destino</label>
                 <input type="text" id="destino" required>
 
                 <label for="tipo">Tipo de paquete</label>
@@ -61,19 +85,80 @@
                     <option value="Paquete">Paquete</option>
                 </select>
 
-                <label for="peso">Peso aproximado</label>
-                <input type="number" id="peso" step="0.1" min="0" required>
+                <label for="descripcion">Descripción del contenido</label>
+                <textarea id="descripcion" required></textarea>
 
-                <label for="entrega">Tipo de entrega</label>
+                <label for="peso">Peso aproximado (kg)</label>
+                <input type="number" id="peso" step="0.1" min="0.1" required>
+
+                <label>Dimensiones del paquete (cm)</label>
+
+                <div class="dimensiones">
+                    <input type="number" id="largo" placeholder="Largo" min="1" required>
+                    <input type="number" id="ancho" placeholder="Ancho" min="1" required>
+                    <input type="number" id="alto" placeholder="Alto" min="1" required>
+                </div>
+
+
+                <h3>Tipo de entrega</h3>
+
+                <label for="entrega">¿Cómo deseas enviar tu paquete?</label>
+
                 <select id="entrega" required>
                     <option value="">Selecciona una opción</option>
-                    <option value="Punto medio">
-                        Entregamos en puntos medios acordados
-                    </option>
-                    <option value="Domicilio">
-                        Envío hasta tu domicilio con costo extra
-                    </option>
+                    <option value="Bodega">Llevar paquete a nuestra bodega</option>
+                    <option value="Domicilio">Recolección en domicilio</option>
                 </select>
+
+
+                <div id="informacionBodega" class="informacion-bodega" style="display:none;">
+
+                    <h3>Ubicación de nuestra bodega</h3>
+
+                    <p>
+                        Para completar tu envío, lleva tu paquete a nuestra
+                        bodega ubicada en:
+                    </p>
+
+                    <strong>PiggeonExpress - Plaza Verona</strong>
+
+                    <p>
+                        Blvd. Belisario Domínguez,
+                        Villas del Río, C.P. 29020,
+                        Tuxtla Gutiérrez, Chiapas.
+                    </p>
+
+                    <iframe
+                        src="https://www.google.com/maps?q=Plaza+Verona+Tuxtla+Gutierrez+Chiapas&output=embed"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen>
+                    </iframe>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Plaza+Verona+Tuxtla+Gutierrez+Chiapas"
+                       target="_blank">
+                        Cómo llegar a la bodega
+                    </a>
+
+                </div>
+
+
+                <div id="costoEnvio" class="costo-envio">
+
+                    <h3>Resumen del costo</h3>
+
+                    <p>Tarifa base: <span id="tarifaBase">$0.00</span></p>
+
+                    <p>Costo por paquete: <span id="costoPaquete">$0.00</span></p>
+
+                    <p>Servicio adicional: <span id="costoEntrega">$0.00</span></p>
+
+                    <h2>Total: $<span id="total">0.00</span> MXN</h2>
+
+                </div>
+
 
                 <button type="submit" class="btn">
                     Registrar envío
@@ -87,12 +172,13 @@
 
     </main>
 
+
     <footer>
-        <p>Gestor de Envíos © 2026</p>
+        <p>PiggeonExpress © 2026</p>
     </footer>
 
     <script type="module" src="js/script.js"></script>
+    <script src="js/sesion.js"></script>
 
 </body>
 </html>
-

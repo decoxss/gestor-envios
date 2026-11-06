@@ -1,27 +1,49 @@
-const formulario = document.getElementById("formularioLogin");
+document.addEventListener("DOMContentLoaded", function () {
 
-formulario.addEventListener("submit", function (evento) {
-    evento.preventDefault();
+    const formulario = document.getElementById("formularioLogin");
 
-    const correo = document.getElementById("correo").value.trim();
-    const password = document.getElementById("password").value;
-    const mensaje = document.getElementById("mensajeLogin");
+    if (!formulario) return;
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    formulario.addEventListener("submit", function (evento) {
+        evento.preventDefault();
 
-    const usuario = usuarios.find(usuario =>
-        usuario.correo === correo &&
-        usuario.password === password
-    );
+        const correo = document.getElementById("correoLogin").value.trim().toLowerCase();
+        const password = document.getElementById("passwordLogin").value;
+        const mensaje = document.getElementById("mensajeLogin");
 
-    if (
-        (correo === "admin@envios.com" && password === "123456") ||
-        usuario
-    ) {
-        sessionStorage.setItem("sesionActiva", "true");
+        let usuarios;
+        try {
+            usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        } catch (error) {
+            usuarios = [];
+        }
 
-        window.location.href = "index.html";
-    } else {
-        mensaje.textContent = "Correo o contraseña incorrectos.";
-    }
+        const usuario = usuarios.find(u =>
+            u.correo === correo && u.password === password
+        );
+
+        if (!usuario) {
+            mensaje.style.color = "#c0392b";
+            mensaje.textContent = "Correo o contraseña incorrectos.";
+            return;
+        }
+
+        // Crea la sesión guardando también el rol
+        localStorage.setItem("sesionActiva", JSON.stringify({
+            nombre: usuario.nombre,
+            correo: usuario.correo,
+            rol: usuario.rol || "cliente"
+        }));
+
+        // Si es administrador va directo al catálogo; si no, a donde quería ir o al inicio
+        let destino = new URLSearchParams(location.search).get("redirigir");
+
+        // Evita redirigir a páginas externas o inválidas
+        if (!destino || !/^[\w-]+\.html$/.test(destino)) {
+            destino = "index.html";
+        }
+
+        window.location.href = destino;
+    });
+
 });
